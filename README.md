@@ -1,4 +1,4 @@
-# Frontend Test Project
+# LearnlyApp Edtech Fullstack Test Project
 
 This project is a full-stack application that I developed as a frontend test. It includes both backend and frontend implementations. The application allows users to manage products, including creating, updating, and deleting products.
 
