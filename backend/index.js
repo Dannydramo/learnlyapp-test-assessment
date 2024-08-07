@@ -7,7 +7,10 @@ const routes = require('./routes/index');
 
 const app = express();
 const corsOptions = {
-    origin: ['http://localhost:5173'],
+    origin: [
+        'http://localhost:5173',
+        'https://alumandu-daniel-learnlyapp-test.vercel.app',
+    ],
     optionSuccessStatus: 200,
 };
 app.use(express.json());
