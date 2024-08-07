@@ -1,15 +1,12 @@
 import axios from 'axios';
-import { LocalStorage } from './localStorageHelper';
-const token = LocalStorage.getItem('auth_token');
 
-export const Axios = async ({ url, method, body }) => {
-    if (token) {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    }
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+export const Axios = async ({ url, method, body, headers }) => {
     const res = await axios({
         method: method,
         url: url,
         data: body,
+        headers,
     });
     return res.data;
 };

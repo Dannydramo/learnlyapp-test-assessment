@@ -25,7 +25,7 @@ const store = createStore({
     actions: {
         async fetchProducts({ commit }) {
             try {
-                const { status, message, data } = await getProducts(); // Call getProducts without arguments
+                const { status, message, data } = await getProducts();
                 if (status !== 200) {
                     return;
                 }

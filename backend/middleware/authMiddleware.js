@@ -4,16 +4,6 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const User = require('../models/user');
 
-const verifyToken = async (token, secret) => {
-    try {
-        const verifyAsync = promisify(jwt.verify);
-        const decoded = await verifyAsync(token, secret);
-        return decoded;
-    } catch (error) {
-        throw new AppError('Unauthorized. Please login and try again', 401);
-    }
-};
-
 exports.userProtect = catchAsync(async (req, res, next) => {
     let token;
     if (
@@ -22,7 +12,7 @@ exports.userProtect = catchAsync(async (req, res, next) => {
     ) {
         token = req.headers.authorization.split(' ')[1];
     }
-
+  
     if (!token) {
         return next(
             new AppError(
@@ -31,7 +21,9 @@ exports.userProtect = catchAsync(async (req, res, next) => {
             )
         );
     }
-    const decoded = await verifyToken(token, process.env.JWT_SECRET);
+    const verifyAsync = promisify(jwt.verify);
+    const decoded = await verifyAsync(token, process.env.JWT_SECRET);
+
 
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {

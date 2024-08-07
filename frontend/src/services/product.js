@@ -1,15 +1,20 @@
 import { Axios } from '../helpers/axiosHelper';
+import { LocalStorage } from '../helpers/localStorageHelper';
 
 let status;
 let message;
 let data;
 
 export const addProduct = async (payload) => {
+    const token = LocalStorage.getItem('auth_token');
     try {
         const response = await Axios({
             url: '/product/new',
             method: 'post',
             body: payload,
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
         });
 
         status = 200;
