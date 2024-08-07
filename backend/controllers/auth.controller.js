@@ -15,7 +15,13 @@ exports.registerUser = catchAsync(async (req, res, next) => {
         password,
         confirmPassword,
     });
-    createSendToken(newUser, 201, res, 'Account created successfully');
+    return ApiResponse(
+        201,
+        res,
+        'Account created successfully',
+        'success',
+        null
+    );
 });
 
 exports.loginUser = catchAsync(async (req, res, next) => {
@@ -25,11 +31,9 @@ exports.loginUser = catchAsync(async (req, res, next) => {
     }
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-        console.log('dfdg');
         return next(new AppError('Incorrect email or password', 401));
     }
     if (!(await user.correctPassword(password, user.password))) {
-        console.log('dfdg');
         return next(new AppError('Incorrect email or password', 401));
     }
     createSendToken(user, 201, res, 'Logged in successfully');

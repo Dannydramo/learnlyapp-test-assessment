@@ -137,11 +137,13 @@ async function onSubmit(values) {
         toast.error(message);
         return;
     }
-
+    const { token, ...user } = data;
+    if (data) {
+        LocalStorage.setItem('auth_token', token);
+    }
     isLoading.value = false;
     toast.success(message);
-    const { token, ...user } = data;
-    LocalStorage.setItem('auth_token', token);
+
     LocalStorage.setItem('userDetails', user);
     setTimeout(() => {
         router.push('/');

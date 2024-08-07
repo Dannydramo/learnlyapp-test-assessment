@@ -118,7 +118,9 @@ const onSubmit = async (values) => {
         await store.dispatch('addProduct', values);
         isLoading.value = false;
         toast.success('Product added successfully');
-        router.push('/');
+        setTimeout(() => {
+            router.push('/');
+        }, 1000);
     } catch (error) {
         isLoading.value = false;
         toast.error('Error adding product');

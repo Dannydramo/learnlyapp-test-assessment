@@ -17,8 +17,3 @@
 .ratio-28\:20::before {
     padding-bottom: 71.42857%;
 }
-
-.productCard__image {
-    position: relative;
-    z-index: 0;
-}
