@@ -79,10 +79,9 @@
                         />
                     </div>
                     <Button
-                        :loading="isLoading"
-                        type="submit"
-                        classValue="bg-[#5111AD] w-full py-3 rounded text-white"
-                        text="Add product"
+                        text="Submit"
+                        :isLoading="isLoading"
+                        class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold leading-6 transition duration-150 ease-in-out rounded-md shadow bg-[#5111AD] text-white p-2 w-full h-12 focus:border"
                     />
                 </Form>
             </div>
