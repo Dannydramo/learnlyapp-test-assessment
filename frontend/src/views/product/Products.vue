@@ -4,16 +4,18 @@
             <div class="w-[90%] mx-auto">
                 <h1 class="text-2xl font-bold mt-4 mb-1">Products Page</h1>
                 <p>A list a ll products.</p>
-                <div class="flex items-center my-6 justify-between">
+                <div
+                    class="flex flex-col sm:flex-row gap-2 sm:items-center my-6 sm:justify-between"
+                >
                     <input
                         type="text"
                         placeholder="Search product by name..."
                         v-model="searchQuery"
-                        class="px-4 py-2 w-80 max-w-96 rounded-md border"
+                        class="px-4 py-2 w-full sm:max-w-96 rounded-md border"
                     />
                     <router-link
                         to="/add-product"
-                        class="ml-4 bg-[#5111AD] text-white px-4 py-2 rounded"
+                        class="sm:ml-4 bg-[#5111AD] text-center text-white px-4 py-2 rounded"
                         >Add Product</router-link
                     >
                 </div>
@@ -31,7 +33,9 @@
                     >
                         <div class="">
                             <div class="relative">
-                                <div class="productCard__image ratio ratio-28:20">
+                                <div
+                                    class="productCard__image ratio ratio-28:20"
+                                >
                                     <img
                                         :src="product.image"
                                         alt=""
@@ -41,7 +45,9 @@
                             </div>
 
                             <div className="">
-                                <h3 className="text-base md:text-xl mt-4 font-semibold">
+                                <h3
+                                    className="text-base md:text-xl mt-4 font-semibold"
+                                >
                                     <span>{{ product.productname }}</span>
                                 </h3>
                                 <p className="w-full text-sm my-1 truncate">
@@ -75,7 +81,9 @@ onMounted(() => {
 
 const filteredProducts = computed(() =>
     products.value.filter((product) =>
-        product.productname.toLowerCase().includes(searchQuery.value.toLowerCase())
+        product.productname
+            .toLowerCase()
+            .includes(searchQuery.value.toLowerCase())
     )
 );
 </script>

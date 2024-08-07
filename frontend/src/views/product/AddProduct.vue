@@ -115,7 +115,6 @@ const onSubmit = async (values) => {
     isLoading.value = true;
     try {
         const image = await uploadImage(fileImage.value);
-        console.log(image);
         values.image = image;
         await store.dispatch('addProduct', values);
         isLoading.value = false;
@@ -128,6 +127,4 @@ const onSubmit = async (values) => {
 };
 </script>
 
-<style scoped>
-/* Add any custom styles here */
-</style>
+<style scoped></style>
