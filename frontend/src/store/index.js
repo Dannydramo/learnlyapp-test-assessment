@@ -35,6 +35,7 @@ const store = createStore({
             }
         },
         async addProduct({ commit }, product) {
+            console.log(product);
             try {
                 const { status, message, data } = await addProduct(product);
                 if (status !== 200) {

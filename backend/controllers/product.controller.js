@@ -5,7 +5,7 @@ const AppError = require('../utils/appError');
 
 exports.createProduct = catchAsync(async (req, res, next) => {
     const { productname, description, price, image } = req.body;
-    console.log(productname, description, price, image);
+
     const existingProduct = await Product.findOne({ productname });
 
     if (existingProduct) {
